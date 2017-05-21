@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from gitdh.config import Config
-from gitdh.database import DatabaseBackend
-from gitdh.module import ModuleLoader, Commit
+from .gitdh.config import Config
+from .gitdh.database import DatabaseBackend
+from .gitdh.module import ModuleLoader, Commit
 
 def gitDhMain(target, action, args, dbBe=None):
 	config = Config.fromPath(target)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os, re
-import gitdh.git
+from . import gitdh.git
 from importlib import import_module
 
 class Module(object):
@@ -138,7 +138,7 @@ class ModuleLoader(object):
 
 		moduleConfSects = self.getModuleConfTuples()
 		confSects = set()
-		for sections, patterns in moduleConfSects.values():
+		for sections, patterns in list(moduleConfSects.values()):
 			confSects = confSects.union(sections)
 
 		self._confSects = confSects
@@ -173,7 +173,7 @@ class ModuleLoader(object):
 	def _genSectRegEx(self, patOnly=False):
 		regExpStmt = '^('
 		first = True
-		for sections, patterns in self.getModuleConfTuples().values():
+		for sections, patterns in list(self.getModuleConfTuples().values()):
 			if not patOnly:
 				for section in sections:
 					if first:

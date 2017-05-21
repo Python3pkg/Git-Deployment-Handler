@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from gitdh import git, module
+from .gitdh import git, module
 from collections import Mapping
 from configparser import ConfigParser
 import os.path
@@ -79,13 +79,13 @@ class ConfigBranches(Mapping):
 		return (s for s in self._cfgParser if self._isBranchSection(s))
 
 	def __len__(self):
-		return len([i for i in self.keys()])
+		return len([i for i in list(self.keys())])
 
 	def __contains__(self, item):
-		return item in self.keys()
+		return item in list(self.keys())
 
 	def __iter__(self):
-		return self.keys()
+		return list(self.keys())
 
 	def __getitem__(self, key):
 		if not self._isBranchSection(key):

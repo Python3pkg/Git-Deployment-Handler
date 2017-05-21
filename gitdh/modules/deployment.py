@@ -26,7 +26,7 @@ class Deployment(Module):
 				branches[commit.branch] = []
 			branches[commit.branch].append(commit)
 
-		for branch in branches.values():
+		for branch in list(branches.values()):
 			sortedCommits = sorted(branch, key=lambda commit: commit.date)
 			for commit in sortedCommits[:-1]:
 				self._removeCommit(commit)

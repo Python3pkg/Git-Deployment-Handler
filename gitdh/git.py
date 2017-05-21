@@ -8,7 +8,7 @@ try:
 	from subprocess import DEVNULL
 except ImportError:
 	# < Python 3.3 compatibility
-	from gitdh.gitdhutils import getDevNull
+	from .gitdh.gitdhutils import getDevNull
 	DEVNULL = getDevNull()
 
 class Git(object):

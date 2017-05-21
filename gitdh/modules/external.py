@@ -29,7 +29,7 @@ class External(Module):
 		if not self.config.getboolean('Git', 'External', fallback=False):
 			return returnCommits
 
-		for confSect in self.config.branches.values():
+		for confSect in list(self.config.branches.values()):
 			branch = confSect.name
 			tmpDir = TemporaryDirectory()
 			self.tmpDirs.append(tmpDir)
